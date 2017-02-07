@@ -37,12 +37,13 @@ public class MainTabAdapter extends Fragment {
     private final int QA_TAB = 1;
     private final int CHAT_TAB = 2;
     private final int NOTIFICATION_TAB = 3;
-    UserDataSP userDataSP;
-
-    View b1,b2;
+    public static boolean openNotificationTab = false;
+    private UserDataSP userDataSP;
+    private View b1,b2;
     public static final String NOTIFICATION_BC_FILTER = "NOTIFICATION_BC_FILTER";
     private static int preRot = 0;
-    ViewPagerAdapter adapter;
+    private ViewPagerAdapter adapter;
+
     public MainTabAdapter() {
         // Required empty public constructor
     }
@@ -114,6 +115,11 @@ public class MainTabAdapter extends Fragment {
         });
 
         getActivity().registerReceiver(receiver,new IntentFilter(NOTIFICATION_BC_FILTER));
+
+        if(openNotificationTab){
+            fab.hide();
+            viewPager.setCurrentItem(3);
+        }
         return rootview;
     }
 

@@ -131,6 +131,7 @@ public class Marks extends AppCompatActivity {
         items.clear();
         if(data.getCount()>0)
         {
+            notAvailable.setVisibility(View.GONE);
             while (data.moveToNext())
             {
                 items.add(new MarksData(data.getString(1), data.getString(2), data.getString(3), data.getString(4), data.getString(5)));

@@ -41,6 +41,7 @@ import com.lead.infosystems.schooldiary.SchoolDiary.StudentDiary_student;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -66,6 +67,7 @@ public class FragTabNotifications extends Fragment {
     private MyDataBase myDataBase;
     private static boolean loaded = false;
     private ProgressBar progressBar;
+    private TextView noNotifications;
     public FragTabNotifications() {
         // Required empty public constructor
     }
@@ -81,6 +83,7 @@ public class FragTabNotifications extends Fragment {
         adapter = new MyListAdapter();
         list.setAdapter(adapter);
         progressBar = (ProgressBar) rootview.findViewById(R.id.progressBar);
+        noNotifications = (TextView) rootview.findViewById(R.id.no_notifications);
         myDataBase = new MyDataBase(getActivity().getApplicationContext());
         userDataSP = new UserDataSP(getActivity().getApplicationContext());
         if(ServerConnect.checkInternetConenction(getActivity())&& !loaded){
@@ -146,6 +149,7 @@ public class FragTabNotifications extends Fragment {
     private void putDataIntoList() {
         Cursor data = myDataBase.getNotifications();
         if(data.getCount()>0){
+            noNotifications.setVisibility(View.GONE);
             items.clear();
             while (data.moveToNext()){
                 items.add(new NotificationData(data.getString(1),data.getString(2)
@@ -155,8 +159,7 @@ public class FragTabNotifications extends Fragment {
             Collections.sort(items,new MyComparator());
            adapter.notifyDataSetChanged();
         }else{
-            Toast.makeText(getActivity().getApplicationContext(),"No notifications",Toast.LENGTH_SHORT).show();
-            //change....
+            noNotifications.setVisibility(View.VISIBLE);
         }
     }
 

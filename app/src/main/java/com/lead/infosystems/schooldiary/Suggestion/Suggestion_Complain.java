@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.INTENTFILTER_SUGGESTION;
+import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.SC_ID;
 import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.SUGGESTER_CLASS;
 import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.SUGGESTER_DIVISION;
 import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.SUGGESTER_FIRSTNAME;
@@ -48,14 +48,14 @@ import static com.lead.infosystems.schooldiary.Suggestion.Suggestion_Post.SUGGES
 public class Suggestion_Complain extends Fragment{
     private FloatingActionButton button;
     private View rootView;
-    ListView list;
+    private ListView list;
     private ArrayList<sc_items> scItem;
     private MyVolley myVolley;
     private ProgressBar progressBar;
     private TextView notAvailable;
     private TextView noInternet;
-    FloadingListAdapter adapter;
-    UserDataSP userDataSp;
+    private FloadingListAdapter adapter;
+    private UserDataSP userDataSp;
     public Suggestion_Complain() {
         // Required empty public constructor
     }
@@ -103,7 +103,7 @@ public class Suggestion_Complain extends Fragment{
      private BroadcastReceiver receiver = new BroadcastReceiver() {
          @Override
          public void onReceive(Context context, Intent intent) {
-              scItem.add(0, new sc_items(intent.getStringExtra(SUGGESTER_FIRSTNAME), intent.getStringExtra(SUGGESTER_LASTNAME), intent.getStringExtra(SUGGESTER_CLASS), intent.getStringExtra(SUGGESTER_DIVISION), intent.getStringExtra(SUGGESTER_PROFILEPIC), intent.getStringExtra(SUGGESTION_TITLE), intent.getStringExtra(SUGGESTION_CONTENT), intent.getStringExtra(SUGGESTION_DATE)));
+              scItem.add(0, new sc_items(intent.getStringExtra(SC_ID), intent.getStringExtra(SUGGESTER_FIRSTNAME), intent.getStringExtra(SUGGESTER_LASTNAME), intent.getStringExtra(SUGGESTER_CLASS), intent.getStringExtra(SUGGESTER_DIVISION), intent.getStringExtra(SUGGESTER_PROFILEPIC), intent.getStringExtra(SUGGESTION_TITLE), intent.getStringExtra(SUGGESTION_CONTENT), intent.getStringExtra(SUGGESTION_DATE)));
               adapter.sortData();
               adapter.notifyDataSetChanged();
          }
@@ -153,7 +153,7 @@ public class Suggestion_Complain extends Fragment{
 
         for (int i = 0; i <= json.length() - 1; i++) {
             JSONObject jsonobj = json.getJSONObject(i);
-            scItem.add(new sc_items(jsonobj.getString(UserDataSP.FIRST_NAME),jsonobj.getString(UserDataSP.LAST_NAME),jsonobj.getString(UserDataSP.CLASS),jsonobj.getString(UserDataSP.DIVISION),jsonobj.getString("profilePic_link"),jsonobj.getString("subject"),jsonobj.getString("content"),jsonobj.getString("date")));
+            scItem.add(new sc_items(jsonobj.getString("sc_id"),jsonobj.getString(UserDataSP.FIRST_NAME),jsonobj.getString(UserDataSP.LAST_NAME),jsonobj.getString(UserDataSP.CLASS),jsonobj.getString(UserDataSP.DIVISION),jsonobj.getString("profilePic_link"),jsonobj.getString("subject"),jsonobj.getString("content"),jsonobj.getString("date")));
 
         }
 

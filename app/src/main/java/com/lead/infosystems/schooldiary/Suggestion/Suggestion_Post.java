@@ -17,10 +17,15 @@ import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.IVolleyResponse;
 import com.lead.infosystems.schooldiary.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Suggestion_Post extends DialogFragment {
     public static final String INTENTFILTER_SUGGESTION ="intent_filter_suggestion";
+    public static final String SC_ID = "sc_id";
     public static final String SUGGESTER_FIRSTNAME = "first_name_suggestion";
     public static final String SUGGESTER_LASTNAME = "last_name_suggestion";
     public static final String SUGGESTER_CLASS = "class_suggestion";
@@ -57,16 +62,28 @@ public class Suggestion_Post extends DialogFragment {
     }
 
     private void InsertData() {
-        final String[] date = new String[1];
         myVolley = new MyVolley(getActivity().getApplicationContext(), new IVolleyResponse() {
             @Override
             public void volleyResponse(String result) {
-                date[0] = result;
-                Log.e("date", date[0]);
-                if (!result.equals("null")){
-
-                    Toast.makeText(getApplicationContext(),"Suggestion and Complaint Done", Toast.LENGTH_SHORT).show();
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    String date = jsonObject.getString("date").split(" ")[0];
+                    if (!result.equals("null")){
+                        parseDataSuggestion(jsonObject.getString("sc_id"),
+                                userdatasp.getUserData(UserDataSP.FIRST_NAME),
+                                userdatasp.getUserData(UserDataSP.LAST_NAME),
+                                userdatasp.getUserData(UserDataSP.CLASS),
+                                userdatasp.getUserData(UserDataSP.DIVISION),
+                                userdatasp.getUserData(UserDataSP.PROPIC_URL),
+                                edit_title.getText().toString(),
+                                edit_content.getText().toString(), date);
+                        Toast.makeText(getApplicationContext(),"Done", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+
 
             }
         });
@@ -76,13 +93,13 @@ public class Suggestion_Post extends DialogFragment {
         myVolley.setParams(UserDataSP.NUMBER_USER,userdatasp.getUserData(UserDataSP.NUMBER_USER));
         myVolley.setParams(UserDataSP.SCHOOL_NUMBER,userdatasp.getUserData(UserDataSP.SCHOOL_NUMBER));
         myVolley.connect();
-        parseDataSuggestion(userdatasp.getUserData(UserDataSP.FIRST_NAME), userdatasp.getUserData(UserDataSP.LAST_NAME), userdatasp.getUserData(UserDataSP.CLASS), userdatasp.getUserData(UserDataSP.DIVISION), userdatasp.getUserData(UserDataSP.PROPIC_URL),edit_title.getText().toString(), edit_content.getText().toString(), date[0]);
         getDialog().dismiss();
     }
 
-    public void parseDataSuggestion(String firstName, String lastName, String class_user, String division_user, String user_pic, String s_title, String s_content, String s_date )
+    public void parseDataSuggestion(String sc_id, String firstName, String lastName, String class_user, String division_user, String user_pic, String s_title, String s_content, String s_date)
     {
         Intent intent = new Intent(INTENTFILTER_SUGGESTION);
+        intent.putExtra(SC_ID,sc_id);
         intent.putExtra(SUGGESTER_FIRSTNAME, firstName);
         intent.putExtra(SUGGESTER_LASTNAME, lastName);
         intent.putExtra(SUGGESTER_CLASS, class_user);
