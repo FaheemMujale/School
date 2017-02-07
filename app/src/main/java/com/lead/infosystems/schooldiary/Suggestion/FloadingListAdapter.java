@@ -20,7 +20,6 @@ import com.lead.infosystems.schooldiary.IVolleyResponse;
 import com.lead.infosystems.schooldiary.R;
 import com.ramotion.foldingcell.FoldingCell;
 import com.squareup.picasso.Picasso;
-import com.sromku.simple.fb.entities.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

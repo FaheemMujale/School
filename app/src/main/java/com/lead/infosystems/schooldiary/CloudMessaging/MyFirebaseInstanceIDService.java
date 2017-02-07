@@ -1,7 +1,5 @@
 package com.lead.infosystems.schooldiary.CloudMessaging;
 
-import android.util.Log;
-
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;

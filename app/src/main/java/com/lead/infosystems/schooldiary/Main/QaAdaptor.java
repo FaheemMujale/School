@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +27,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.lead.infosystems.schooldiary.Data.QaData;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
-import com.lead.infosystems.schooldiary.R;
 import com.lead.infosystems.schooldiary.Generic.ServerConnect;
 import com.lead.infosystems.schooldiary.Generic.Utils;
+import com.lead.infosystems.schooldiary.R;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 

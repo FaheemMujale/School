@@ -11,12 +11,11 @@ import android.widget.TextView;
 
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Main.MainActivity;
-import com.lead.infosystems.schooldiary.Main.PostComments;
 
 public class Splash extends Activity {
 
-    UserDataSP userDataSP;
-    TextView t1,t2,t3;
+    private UserDataSP userDataSP;
+    private TextView t1,t2,t3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

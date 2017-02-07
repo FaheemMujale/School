@@ -1,25 +1,13 @@
 package com.lead.infosystems.schooldiary.ShareButton;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.facebook.share.model.SharePhoto;
-import com.facebook.share.model.SharePhotoContent;
-import com.facebook.share.widget.ShareDialog;
-import com.lead.infosystems.schooldiary.Main.FragTabHome;
-import com.lead.infosystems.schooldiary.R;
 import com.sromku.simple.fb.SimpleFacebook;
-import com.sromku.simple.fb.entities.Album;
 import com.sromku.simple.fb.entities.Feed;
-import com.sromku.simple.fb.entities.Photo;
-import com.sromku.simple.fb.listeners.OnAlbumsListener;
 import com.sromku.simple.fb.listeners.OnPublishListener;
-
-import java.util.List;
 
 /**
  * Created by Naseem on 06-01-2017.

@@ -1,7 +1,5 @@
 package com.lead.infosystems.schooldiary.Data;
 
-import android.util.Log;
-
 /**
  * Created by Faheem on 26-11-2016.
  */

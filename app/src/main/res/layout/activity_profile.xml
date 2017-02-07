@@ -87,6 +87,7 @@
         app:layout_anchorGravity="top|center_horizontal"
         android:layout_gravity="bottom|center_horizontal"
         android:paddingTop="25dp"
+        android:visibility="gone"
         android:textStyle="normal|bold|italic"
         android:textSize="18sp"
         android:textColor="@color/backgroundSemiGray" />

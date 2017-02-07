@@ -19,10 +19,10 @@ import android.widget.Toast;
 import com.lead.infosystems.schooldiary.Data.QaData;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Generic.MyVolley;
-import com.lead.infosystems.schooldiary.IVolleyResponse;
-import com.lead.infosystems.schooldiary.R;
 import com.lead.infosystems.schooldiary.Generic.ServerConnect;
 import com.lead.infosystems.schooldiary.Generic.Utils;
+import com.lead.infosystems.schooldiary.IVolleyResponse;
+import com.lead.infosystems.schooldiary.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +61,7 @@ public class FragTabQA extends Fragment implements QaAdaptor.OnLoadMoreListener,
             progressBar.setVisibility(View.VISIBLE);
             loadData(QA_MIN,getActivity().getApplicationContext());
         }else{
-            if(userDataSP.getPostData()!=""){
+            if(userDataSP.getQaData()!=""){
                 swipeRefreshLayout.setRefreshing(false);
                 qaAdaptor.addAll(parseJson(userDataSP.getQaData()));
             }

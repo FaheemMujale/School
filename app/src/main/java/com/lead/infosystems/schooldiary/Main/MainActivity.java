@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,11 +23,11 @@ import com.lead.infosystems.schooldiary.ApplicationForm.ApplicationForm;
 import com.lead.infosystems.schooldiary.Attendance.Attendance_student;
 import com.lead.infosystems.schooldiary.Attendance.Attendance_teacher;
 import com.lead.infosystems.schooldiary.Data.MyDataBase;
-import com.lead.infosystems.schooldiary.Data.NotificationData;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Events.EventAll;
 import com.lead.infosystems.schooldiary.ExamTest.ExamDetails;
 import com.lead.infosystems.schooldiary.Generic.ServerConnect;
+import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.Login;
 import com.lead.infosystems.schooldiary.MainSearch;
 import com.lead.infosystems.schooldiary.Management.ManagmentSchool;
@@ -41,10 +40,9 @@ import com.lead.infosystems.schooldiary.SchoolDiary.StudentDiary_student;
 import com.lead.infosystems.schooldiary.SchoolDiary.StudentDiary_teacher;
 import com.lead.infosystems.schooldiary.ShareButton.MyConfig;
 import com.lead.infosystems.schooldiary.Suggestion.Suggestion_Complain;
-import com.sromku.simple.fb.SimpleFacebook;
-import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.sromku.simple.fb.SimpleFacebook;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,8 +1,6 @@
 package com.lead.infosystems.schooldiary.Main;
 
 import android.graphics.Bitmap;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.TextView;
 

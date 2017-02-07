@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +23,12 @@ import android.widget.Toast;
 
 import com.lead.infosystems.schooldiary.Data.Post_Data;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
-import com.lead.infosystems.schooldiary.IPostInterface;
-import com.lead.infosystems.schooldiary.R;
+import com.lead.infosystems.schooldiary.Generic.MyVolley;
 import com.lead.infosystems.schooldiary.Generic.ServerConnect;
 import com.lead.infosystems.schooldiary.Generic.Utils;
+import com.lead.infosystems.schooldiary.IPostInterface;
+import com.lead.infosystems.schooldiary.IVolleyResponse;
+import com.lead.infosystems.schooldiary.R;
 import com.lead.infosystems.schooldiary.ShareButton.Login_fb;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -227,9 +228,11 @@ public class PostAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     @Override
                     public void onClick(View v) {
                         //delete post
-                        final CharSequence[] item = { "Delete"};
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
-                        dialog.setItems(item, new DialogInterface.OnClickListener() {
+
+                        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(context);
+                        alert.setTitle("Alert");
+                        alert.setMessage("Are you sure to delete");
+                        alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Uri.Builder builder = new Uri.Builder();
@@ -237,7 +240,13 @@ public class PostAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                                 new ActionConnect(Utils.DELETE, null, null,position).execute(builder.build().getQuery());
                             }
                         });
-                        dialog.show();
+                        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        alert.show();
 
                     }
                 });

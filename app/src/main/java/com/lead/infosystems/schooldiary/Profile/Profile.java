@@ -53,7 +53,6 @@ import net.gotev.uploadservice.UploadStatusDelegate;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;

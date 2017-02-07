@@ -2,23 +2,19 @@ package com.lead.infosystems.schooldiary.Generic;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.util.Base64;
 import android.util.Log;
 
 import com.lead.infosystems.schooldiary.ICompressedImage;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 
 /**
  * Created by Faheem on 26-12-2016.

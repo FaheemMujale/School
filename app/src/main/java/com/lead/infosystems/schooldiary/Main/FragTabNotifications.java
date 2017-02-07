@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lead.infosystems.schooldiary.ApplicationForm.ApplicationForm;
 import com.lead.infosystems.schooldiary.Data.MyDataBase;
@@ -29,19 +27,17 @@ import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Events.EventAll;
 import com.lead.infosystems.schooldiary.ExamTest.ExamDetails;
 import com.lead.infosystems.schooldiary.Generic.MyVolley;
+import com.lead.infosystems.schooldiary.Generic.ServerConnect;
+import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.IVolleyResponse;
 import com.lead.infosystems.schooldiary.Model_Paper.ModelQuestionPapers;
 import com.lead.infosystems.schooldiary.Progress.Progress_Report;
 import com.lead.infosystems.schooldiary.R;
-
-import com.lead.infosystems.schooldiary.Generic.ServerConnect;
-import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.SchoolDiary.StudentDiary_student;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
