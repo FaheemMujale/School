@@ -198,6 +198,7 @@ public class FragTabChat extends Fragment {
         items.clear();
         if(dataBase.getActiveChats().getCount() >0){
             Cursor data = dataBase.getActiveChats();
+            data.moveToFirst();
             while (data.moveToNext()){
                 items.add(new ChatListItems(data.getString(1)
                         ,data.getString(2),data.getString(3)

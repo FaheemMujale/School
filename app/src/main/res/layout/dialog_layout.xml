@@ -67,6 +67,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintVertical_bias="0.0"
-            android:backgroundTint="@color/colorMaroon" />
+            android:background="@color/colorMaroon" />
         </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

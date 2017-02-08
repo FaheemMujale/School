@@ -1,7 +1,6 @@
 package com.lead.infosystems.schooldiary.Main;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -23,11 +22,9 @@ import android.widget.Toast;
 
 import com.lead.infosystems.schooldiary.Data.Post_Data;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
-import com.lead.infosystems.schooldiary.Generic.MyVolley;
 import com.lead.infosystems.schooldiary.Generic.ServerConnect;
 import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.IPostInterface;
-import com.lead.infosystems.schooldiary.IVolleyResponse;
 import com.lead.infosystems.schooldiary.R;
 import com.lead.infosystems.schooldiary.ShareButton.Login_fb;
 import com.squareup.picasso.NetworkPolicy;
@@ -229,7 +226,7 @@ public class PostAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     public void onClick(View v) {
                         //delete post
 
-                        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(context);
+                        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(activity);
                         alert.setTitle("Alert");
                         alert.setMessage("Are you sure to delete");
                         alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {

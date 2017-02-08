@@ -67,5 +67,5 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/cardview_light_background"
         android:id="@+id/submit_event"
-        android:backgroundTint="@color/colorPrimary" />
+        android:background="@color/colorPrimary" />
 </RelativeLayout>

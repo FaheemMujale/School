@@ -7,8 +7,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Generic.MyVolley;
 import com.lead.infosystems.schooldiary.Generic.Utils;
@@ -20,6 +22,7 @@ public class Login extends AppCompatActivity implements IVolleyResponse {
 
     private EditText eUsername;
     private EditText ePassword;
+    private Button login;
     private String username;
     private String password;
     private UserDataSP userDataSP;
@@ -36,6 +39,13 @@ public class Login extends AppCompatActivity implements IVolleyResponse {
         setContentView(R.layout.activity_login);
         eUsername = (EditText) findViewById(R.id.username);
         ePassword = (EditText) findViewById(R.id.password);
+        login = (Button) findViewById(R.id.login);
+
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            eUsername.setBackgroundResource(R.drawable.round_corner);
+            ePassword.setBackgroundResource(R.drawable.round_corner);
+            login.setBackgroundResource(R.drawable.round_corner_btn);
+        }
         userDataSP = new UserDataSP(getApplicationContext());
     }
 

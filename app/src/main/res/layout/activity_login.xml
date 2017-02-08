@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.62"
             android:textAlignment="center"
             android:backgroundTint="@color/cardview_light_background"
-            android:background="@drawable/round_corner"
+            android:background="@color/cardview_light_background"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"/>
 
@@ -72,7 +72,7 @@
             android:id="@+id/password"
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/cardview_light_background"
-            android:background="@drawable/round_corner"
+            android:background="@color/cardview_light_background"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             app:layout_constraintRight_toRightOf="parent"
@@ -102,7 +102,7 @@
             android:onClick="login_btn"
             android:textAllCaps="false"
             android:textStyle="normal|bold|italic"
-            android:background="@drawable/round_corner_btn"
+            android:background="@color/backgroundSemiGray"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textSize="18sp"

@@ -97,7 +97,7 @@
             android:layout_width="384dp"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true"
-            android:backgroundTint="@color/colorAccent"
+            android:background="@color/colorAccent"
             android:id="@+id/button_submit"
             android:textColor="@color/cardview_light_background"
             android:layout_alignParentRight="true"

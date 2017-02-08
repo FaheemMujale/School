@@ -48,6 +48,8 @@ public class Splash extends Activity {
                 activityOptionsCompat = ActivityOptionsCompat
                         .makeSceneTransitionAnimation(this,p1,p2,p3);
             startActivity(intent,activityOptionsCompat.toBundle());
+        }else{
+            startActivity(intent);
         }
     }
 }
