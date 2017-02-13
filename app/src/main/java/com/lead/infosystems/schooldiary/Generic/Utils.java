@@ -65,6 +65,7 @@ public class Utils {
     public static final String HOMEWORK_DELETE= SERVER_URL+"homework_delete.php";
     public static final String EXAM_DETAIL = SERVER_URL+"exam_insert.php";
     public static final String MANAGEMENT_DETAIL = SERVER_URL+"management_fetch.php";
+    public static final String ALERT_ALL = SERVER_URL+"alert_all.php";
 
 
 

@@ -61,7 +61,7 @@ public class StudentDiary_DatePicker extends AppCompatActivity implements IVolle
         divisionName = intent.getStringExtra("division");
         subjectName = intent.getStringExtra("subject");
         editTitle = (EditText)findViewById(R.id.title_home);
-        editContent = (EditText)findViewById(R.id.content_home);
+        editContent = (EditText)findViewById(R.id.alertText);
         date_display = (TextView) findViewById(R.id.date_display);
         submitB = (Button)findViewById(R.id.submit_home);
         submitB.setOnClickListener(new View.OnClickListener() {

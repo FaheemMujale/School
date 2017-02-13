@@ -96,11 +96,12 @@ public class Marks extends AppCompatActivity {
                             JSONObject json_obj_marks = json_marks.getJSONObject(k);
                             String marks_exam = json_obj_marks.getString("marks");
                             int marks = (int) Float.parseFloat(marks_exam);
+                            String min_marks = json_obj_marks.getString("min_marks");
                             String total_marks = json_obj_marks.getString("total_marks");
                             int total = Integer.parseInt(total_marks);
                             String date = json_obj_marks.getString("date");
                             Float percentage = (float) ((marks * 100) / total);
-                            myDataBase.insertMarksData(date, exam_name, total+"", marks+"", percentage+"");
+                            myDataBase.insertMarksData(date, exam_name, total+"",min_marks+"", marks+"", percentage+"");
                         }
                         putMarksDataList();
                     }
@@ -133,7 +134,9 @@ public class Marks extends AppCompatActivity {
             notAvailable.setVisibility(View.GONE);
             while (data.moveToNext())
             {
-                items.add(new MarksData(data.getString(1), data.getString(2), data.getString(3), data.getString(4), data.getString(5)));
+                items.add(new MarksData(data.getString(1), data.getString(2),
+                        data.getString(3), data.getString(4), data.getString(5),
+                        data.getString(6)));
             }
         }
         else
@@ -154,19 +157,20 @@ public class Marks extends AppCompatActivity {
             if (ItemView == null) {
                 ItemView = getLayoutInflater().inflate(R.layout.layout, parent, false);
             }
-                MarksData currentItem = items.get(position);
-                TextView examName = (TextView) ItemView.findViewById(R.id.exam_name);
-                TextView totalMarks = (TextView) ItemView.findViewById(R.id.total_marks);
-                TextView obtMarks = (TextView) ItemView.findViewById(R.id.obtained_marks);
-                TextView percentage = (TextView) ItemView.findViewById(R.id.percentage_marks);
-                TextView examDate = (TextView) ItemView.findViewById(R.id.date_exam);
-                examDate.setText(currentItem.getDate());
-                examName.setText(currentItem.getExam_name());
-                totalMarks.setText(currentItem.getTotal_max());
-                obtMarks.setText(currentItem.getObtained_max());
-                percentage.setText(currentItem.getPercentage());
-                return ItemView;
-
+            MarksData currentItem = items.get(position);
+            TextView examName = (TextView) ItemView.findViewById(R.id.exam_name);
+            TextView totalMarks = (TextView) ItemView.findViewById(R.id.total_marks);
+            TextView obtMarks = (TextView) ItemView.findViewById(R.id.obtained_marks);
+            TextView min = (TextView) ItemView.findViewById(R.id.min_marks);
+            TextView percentage = (TextView) ItemView.findViewById(R.id.percentage_marks);
+            TextView examDate = (TextView) ItemView.findViewById(R.id.date_exam);
+            examDate.setText(currentItem.getDate());
+            examName.setText(currentItem.getExam_name());
+            min.setText(currentItem.getMinMarks());
+            totalMarks.setText(currentItem.getTotal_max());
+            obtMarks.setText(currentItem.getObtained_max());
+            percentage.setText(currentItem.getPercentage());
+            return ItemView;
         }
     }
 }

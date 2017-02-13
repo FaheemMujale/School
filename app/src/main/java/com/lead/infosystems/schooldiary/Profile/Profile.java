@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,6 +81,7 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
     private ProgressBar proPicProgressBar;
     private Target target;
     private TextView noPosts;
+    private boolean hasPosts = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -357,7 +359,7 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
         if(ServerConnect.checkInternetConenction(this) && !backPressed){
             refresh();
         }else{
-            if(userDataSP.getPostData()!=""){
+            if(userDataSP.getPostData().length() > 5){
                 noPosts.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
                 postAdaptor.addAll(getJsonData(userDataSP.getPostData()));
@@ -389,6 +391,7 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
         swipeRefreshLayout.setEnabled(false);
         if(!s.isEmpty() && s != "ERROR") {
             itemlist.clear();
+            hasPosts = true;
             if (POST_MIN == "0") {
                 swipeRefreshLayout.setRefreshing(false);
                 postAdaptor.addAll(getJsonData(s));
@@ -401,7 +404,12 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
             }
 
         }else{
-            Toast.makeText(getApplicationContext(),"No more posts...",Toast.LENGTH_SHORT).show();
+            if(hasPosts){
+                noPosts.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(),"No more posts...",Toast.LENGTH_SHORT).show();
+            }else{
+                noPosts.setVisibility(View.VISIBLE);
+            }
             noMorePost = true;
             postAdaptor.setProgressMore(false);
             postAdaptor.setMoreLoading(false);

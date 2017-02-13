@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 
+import com.lead.infosystems.schooldiary.AlertAll;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.R;
 
@@ -84,7 +85,11 @@ public class MainTabAdapter extends Fragment {
                     updateTabs();
                 }
                 else if(position == NOTIFICATION_TAB){
-                    fab.hide();
+                    if(userDataSP.isStudent()) {
+                        fab.hide();
+                    }else{
+                        fab.show();
+                    }
                     userDataSP.setNotificationNumber(0,UserDataSP.NOTIFICATION_NUM);
                     updateTabs();
                 }
@@ -107,7 +112,12 @@ public class MainTabAdapter extends Fragment {
                     startActivity(new Intent(getActivity(),ChatNew.class));
                 }
                 else if(currentTab == NOTIFICATION_TAB){
-                    fab.hide();
+                    if(userDataSP.isStudent()) {
+                        fab.hide();
+                    }else{
+                        fab.show();
+                        loadAlertDialog();
+                    }
                 }
             }
         });
@@ -140,6 +150,11 @@ public class MainTabAdapter extends Fragment {
         else if(position == NOTIFICATION_TAB){
             getActivity().setTitle("Notifications");
         }
+    }
+    private void loadAlertDialog(){
+        android.app.FragmentManager fragmentManager = getActivity().getFragmentManager();
+        AlertAll dialog = new AlertAll();
+        dialog.show(fragmentManager,"frag");
     }
     private void loadHomeFragDialog(){
         android.app.FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -195,7 +210,9 @@ public class MainTabAdapter extends Fragment {
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateTabs();
+            if(!intent.getAction().contentEquals(AlertAll.ALERT_NOTIFICATION)) {
+                updateTabs();
+            }
         }
     };
 
@@ -218,7 +235,7 @@ public class MainTabAdapter extends Fragment {
     public void rotateFab(final FloatingActionButton fab, int dir, int state) {
         if((preRot - dir) > 0) {
             if(state != 0){
-                final Animation an = new RotateAnimation(0, 180*state, fab.getWidth() / 3, fab.getHeight() / 3);
+                final Animation an = new RotateAnimation(0, 180*state, (float) (fab.getWidth() / 2.3), (float) (fab.getHeight() / 2.3));
                 an.setDuration(500);
                 an.setFillAfter(true);
                 fab.clearAnimation();
@@ -226,7 +243,7 @@ public class MainTabAdapter extends Fragment {
             }
         }else{
             if(state != 0){
-                final Animation an = new RotateAnimation(0, -180*state, fab.getWidth() / 3, fab.getHeight() / 3);
+                final Animation an = new RotateAnimation(0, -180*state, (float) (fab.getWidth() / 2.3), (float) (fab.getHeight() / 2.3));
                 an.setDuration(500);
                 an.setFillAfter(true);
                 fab.clearAnimation();

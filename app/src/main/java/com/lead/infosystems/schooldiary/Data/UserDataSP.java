@@ -22,7 +22,6 @@ public class UserDataSP {
     public static final String MOBILE_NUMBER = "mobile";
     public static final String ADDRESS = "address";
     public static final String EMAIL_ID = "gmail_id";
-    public static final String BLOOD_GROUP = "blood_group";
     public static final String CLASS = "class";
     public static final String CLOUD_ID = "reg_id";
     public static final String POST_DATA = "POST_DATA";
@@ -67,7 +66,6 @@ public class UserDataSP {
         JSONArray jsonArray = new JSONArray(json);
         JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-
         editor.putString(IDENTIFICATION,jsonObject.getString(IDENTIFICATION));
         editor.putString(SCHOOL_NUMBER,jsonObject.getString(SCHOOL_NUMBER));
         editor.putString(NUMBER_USER,jsonObject.getString(NUMBER_USER));
@@ -79,7 +77,6 @@ public class UserDataSP {
         editor.putString(MOBILE_NUMBER,jsonObject.getString(MOBILE_NUMBER));
         editor.putString(ADDRESS,jsonObject.getString(ADDRESS));
         editor.putString(EMAIL_ID,jsonObject.getString(EMAIL_ID));
-        editor.putString(BLOOD_GROUP,jsonObject.getString(BLOOD_GROUP));
         editor.putString(SCHOOL_FEES,jsonObject.getString(SCHOOL_FEES));
         editor.putString(SCHOOL_WEBSITE_LINK,jsonObject.getString(SCHOOL_WEBSITE_LINK));
 
@@ -88,7 +85,7 @@ public class UserDataSP {
     }
 
     public boolean isStudent(){
-       return sharedPreferences.getString(IDENTIFICATION,"").contentEquals("student")? true:false;
+       return sharedPreferences.getString(IDENTIFICATION,"").contentEquals("student");
     }
 
     public void storeStudentData(String json)throws JSONException{

@@ -123,10 +123,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View holder = navigationView.getHeaderView(0);
         propic = (ImageView) holder.findViewById(R.id.propic);
         Picasso.with(getApplicationContext())
-                .load(Utils.SERVER_URL+(userDataSP.getUserData(UserDataSP.PROPIC_URL).replace("profilepic","propic_thumb")))
+                .load(Utils.SERVER_URL + (userDataSP.getUserData(UserDataSP.PROPIC_URL).replace("profilepic", "propic_thumb")))
                 .placeholder(R.drawable.defaultpropic)
-                .networkPolicy(ServerConnect.checkInternetConenction(this)?
-                        NetworkPolicy.NO_CACHE:NetworkPolicy.OFFLINE)
+                .error(R.drawable.defaultpropic)
+                .networkPolicy(ServerConnect.checkInternetConenction(this) ?
+                        NetworkPolicy.NO_CACHE : NetworkPolicy.OFFLINE)
                 .into(propic);
         TextView name = (TextView) holder.findViewById(R.id.title);
         TextView rollnum = (TextView) holder.findViewById(R.id.rollnum);
@@ -140,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fb=SimpleFacebook.getInstance(this);
         Picasso.with(getApplicationContext())
                 .load(Utils.SERVER_URL+(userDataSP.getUserData(UserDataSP.PROPIC_URL).replace("profilepic","propic_thumb")))
+                .placeholder(R.drawable.defaultpropic)
+                .error(R.drawable.defaultpropic)
                 .networkPolicy(ServerConnect.checkInternetConenction(this)?
                         NetworkPolicy.NO_CACHE:NetworkPolicy.OFFLINE)
                 .into(propic);

@@ -70,10 +70,11 @@ public class MyDataBase extends SQLiteOpenHelper {
     private static final String MARKS_TABLE = "marks_table";
     private static final String EXAM_DATE_MARKS = "date";
     private static final String EXAM_NAME_MARKS = "exam_name";
+    private static final String MIN_MARKS = "min_marks";
     private static final String TOTAL_MARKS = "total";
     private static final String OBTAIN_MARKS = "marks";
     private static final String MARKS_PERCENTAGE = "percentage";
-    String CREATE_MARKS_TABLE = "create table "+ MARKS_TABLE + "("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+EXAM_DATE_MARKS+" TEXT, "+EXAM_NAME_MARKS+" TEXT, "+TOTAL_MARKS+" TEXT, "+OBTAIN_MARKS+" TEXT, "+MARKS_PERCENTAGE+" TEXT)";
+    String CREATE_MARKS_TABLE = "create table "+ MARKS_TABLE + "("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+EXAM_DATE_MARKS+" TEXT, "+EXAM_NAME_MARKS+" TEXT, "+TOTAL_MARKS+" TEXT, "+MIN_MARKS+" TEXT, "+OBTAIN_MARKS+" TEXT, "+MARKS_PERCENTAGE+" TEXT)";
 
 
 
@@ -319,12 +320,13 @@ public class MyDataBase extends SQLiteOpenHelper {
 
 
     //working with Marks table
-    public void insertMarksData(String date, String exam_name, String total, String marks, String percentage){
+    public void insertMarksData(String date, String exam_name, String total,String min_marks, String marks, String percentage){
         ContentValues contentValues = new ContentValues();
         contentValues.put(EXAM_DATE_MARKS, date);
         contentValues.put(EXAM_NAME_MARKS, exam_name);
         contentValues.put(TOTAL_MARKS, total);
         contentValues.put(OBTAIN_MARKS,marks);
+        contentValues.put(MIN_MARKS,min_marks);
         contentValues.put(MARKS_PERCENTAGE, percentage);
         int a = (int) db.insert(MARKS_TABLE,null,contentValues);
     }

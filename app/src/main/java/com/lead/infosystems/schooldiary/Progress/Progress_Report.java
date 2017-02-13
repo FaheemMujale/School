@@ -1,6 +1,7 @@
 package com.lead.infosystems.schooldiary.Progress;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -92,17 +93,18 @@ public class Progress_Report extends Fragment {
         }
         else
         {
-           putIntoList();
+           putIntoList(getActivity());
         }
     }
     private void getDataFromServer(){
+        final Activity activity = getActivity();
         MyVolley volley = new MyVolley(getActivity().getApplicationContext(), new IVolleyResponse() {
             @Override
             public void volleyResponse(String result) {
                 if(result != MyVolley.RESPONSE_ERROR){
                     userDataSP.storeMarksData(result);
                     try {
-                        getJsonData(result);
+                        getJsonData(result,activity);
                     } catch (JSONException e) {
                         e.printStackTrace();
                         notAvailable.setVisibility(View.VISIBLE);
@@ -116,7 +118,7 @@ public class Progress_Report extends Fragment {
         volley.connect();
     }
 
-    private void getJsonData(String re) throws JSONException {
+    private void getJsonData(String re,Activity activity) throws JSONException {
         JSONArray json = new JSONArray(re);
         myDataBase.clearSubjectData();
         for (int i = 0; i <= json.length() - 1; i++) {
@@ -124,7 +126,7 @@ public class Progress_Report extends Fragment {
             myDataBase.insertSubjectData(jsonobj.getString("sub_name"));
           examData = jsonobj.getString("sub_data");
         }
-        putIntoList();
+        putIntoList(activity);
 
     }
 
@@ -164,7 +166,7 @@ public class Progress_Report extends Fragment {
             }
         });
     }
-    public void putIntoList()
+    public void putIntoList(Activity activity)
     {
         Cursor data = myDataBase.getSubjectData();
         if(data.getCount()>0)
@@ -180,7 +182,7 @@ public class Progress_Report extends Fragment {
             btn1.setVisibility(View.GONE);
             notAvailable.setVisibility(View.VISIBLE);
         }
-        object = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, subjects);
+        object = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, subjects);
         list = (ListView)rootView.findViewById(R.id.list);
         list.setAdapter(object);
 

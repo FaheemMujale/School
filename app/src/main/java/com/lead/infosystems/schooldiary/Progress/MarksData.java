@@ -11,13 +11,19 @@ public class MarksData {
     private String total_max;
     private String obtained_max;
     private String percentage;
+    private String minMarks;
 
-    public MarksData(String date, String exam_name, String total_max, String obtained_max, String percentage) {
+    public MarksData(String date, String exam_name, String total_max,String min_marks, String obtained_max, String percentage) {
         this.date = date;
         this.exam_name = exam_name;
         this.total_max = total_max;
         this.obtained_max = obtained_max;
+        this.minMarks = min_marks;
         this.percentage = percentage;
+    }
+
+    public String getMinMarks() {
+        return minMarks;
     }
 
     public String getDate() {
