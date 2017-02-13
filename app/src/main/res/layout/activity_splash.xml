@@ -39,6 +39,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp" />
 
+    <ImageView
+        android:src="@drawable/lis_logo"
+        android:id="@+id/lis_logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:transitionName="@string/transition_lis_logo"
+        android:layout_below="@+id/pwd_by"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:text="Lead Info Systems"
         android:layout_width="wrap_content"
@@ -51,7 +60,8 @@
         android:transitionName="@string/transition_name_login_pow"
         android:textColor="@color/cardview_light_background"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/pwd_by"
+        android:translationZ="1000dp"
+        android:layout_marginBottom="14dp"
+        android:layout_alignBottom="@+id/lis_logo"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
