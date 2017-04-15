@@ -3,6 +3,7 @@ package com.lead.infosystems.schooldiary.Main;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -137,6 +138,14 @@ public class PostAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             ((StudentViewHolder) holder).name.setText(singleItem.getFirst_name() + " " + singleItem.getLast_name());
             ((StudentViewHolder) holder).time.setText(Utils.getTimeString(singleItem.gettimeString()));
             ((StudentViewHolder) holder).text.setText(singleItem.getText_message());
+            ((StudentViewHolder) holder).postImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity.getApplicationContext(),PhotoViewActivity.class);
+                    intent.putExtra(PhotoViewActivity.IMAGE_PATH,singleItem.getSrc_link());
+                    activity.startActivity(intent);
+                }
+            });
             if (singleItem.getSrc_link().length()>10) {
                 ((StudentViewHolder) holder).postImage.setVisibility(View.VISIBLE);
                 Picasso.with(context)
@@ -210,7 +219,8 @@ public class PostAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                             , ((StudentViewHolder) holder).postCardView
                             ,((StudentViewHolder) holder).comment_num
                             ,postImageBitmap[0]
-                            , isImageAvailable[0]
+                            ,singleItem.getSrc_link()
+                            ,isImageAvailable[0]
                             ,singleItem.getId()
                             ,singleItem
                             ,position);

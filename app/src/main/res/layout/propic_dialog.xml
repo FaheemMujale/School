@@ -18,37 +18,15 @@
         android:textSize="18sp"
         android:textAllCaps="true" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:srcCompat="@color/cardview_dark_background"
-        android:id="@+id/imageView2"
-        android:layout_margin="8dp"/>
 
-    <TextView
-        android:text="Select Action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:textStyle="normal|bold"
-        android:textSize="14sp"
-        android:textColor="@color/colorBlue"
-        android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"
         android:id="@+id/propic_gallery"
         android:layout_height="wrap_content"
-        android:text="   Gallery"
+        android:text="   I Agree"
         android:background="?android:attr/selectableItemBackground"
         android:textAllCaps="false"
         android:textSize="14sp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="   Camera"
-        android:id="@+id/propic_camera"
-        android:background="?android:attr/selectableItemBackground"
-        android:textAllCaps="false"
-        android:textSize="14sp" />
+
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.lead.infosystems.schooldiary.Main;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -101,6 +102,15 @@ public class PostComments extends AppCompatActivity {
 
         });
         populateViews();
+
+        post_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity.getApplicationContext(),PhotoViewActivity.class);
+                intent.putExtra(PhotoViewActivity.IMAGE_PATH,getIntent().getExtras().getString(PhotoViewActivity.IMAGE_PATH));
+                activity.startActivity(intent);
+            }
+        });
 
         commentsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

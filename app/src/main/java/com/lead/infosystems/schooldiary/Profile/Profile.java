@@ -38,6 +38,7 @@ import com.lead.infosystems.schooldiary.Generic.Utils;
 import com.lead.infosystems.schooldiary.ICompressedImage;
 import com.lead.infosystems.schooldiary.IPostInterface;
 import com.lead.infosystems.schooldiary.IVolleyResponse;
+import com.lead.infosystems.schooldiary.Main.PhotoViewActivity;
 import com.lead.infosystems.schooldiary.Main.PostAdaptor;
 import com.lead.infosystems.schooldiary.Main.PostAnimData;
 import com.lead.infosystems.schooldiary.Main.PostComments;
@@ -108,17 +109,17 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
                 final View deleteDialogView = factory.inflate(R.layout.propic_dialog, null);
                 final AlertDialog deleteDialog = new AlertDialog.Builder(activity).create();
                 deleteDialog.setView(deleteDialogView);
-                deleteDialogView.findViewById(R.id.propic_camera).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        File f = new File(android.os.Environment
-                                .getExternalStorageDirectory(), Utils.TEMP_IMG);
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                        startActivityForResult(intent, 0);
-                        deleteDialog.dismiss();
-                    }
-                });
+//                deleteDialogView.findViewById(R.id.propic_camera).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                        File f = new File(android.os.Environment
+//                                .getExternalStorageDirectory(), Utils.TEMP_IMG);
+//                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+//                        startActivityForResult(intent, 0);
+//                        deleteDialog.dismiss();
+//                    }
+//                });
                 deleteDialogView.findViewById(R.id.propic_gallery).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -144,8 +145,7 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
             if(resultCode == activity.RESULT_OK) {
                 switch(requestCode) {
                 case 0:
-                    File f = new File(Environment.getExternalStorageDirectory()
-                            .toString());
+                    File f = new File(Environment.getExternalStorageDirectory().getPath());
                     for (File temp : f.listFiles()) {
                         if (temp.getName().equals(Utils.TEMP_IMG)) {
                             f = temp;
@@ -486,10 +486,7 @@ public class Profile extends AppCompatActivity implements IPostInterface,SwipeRe
         backPressed = true;
 
         Intent intent = new Intent(getApplicationContext(),PostComments.class);
-//        Bundle b = new Bundle();
-//        b.putSerializable(PostComments.ANIM_DATA,postAnimData);
-//        intent.putExtras(b);
-
+        intent.putExtra(PhotoViewActivity.IMAGE_PATH,postAnimData.getPostImageLink());
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             Pair<View,String> p1 = Pair.create(postAnimData.getName(), postAnimData.getName().getTransitionName());
             Pair<View,String> p2 = Pair.create(postAnimData.getTime(), postAnimData.getTime().getTransitionName());

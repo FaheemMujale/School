@@ -122,6 +122,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     public void onCommentClick(PostAnimData postAnimData) {
         backPressed = true;
         Intent intent = new Intent(getActivity(),PostComments.class);
+        intent.putExtra(PhotoViewActivity.IMAGE_PATH,postAnimData.getPostImageLink());
         ActivityOptionsCompat activityOptionsCompat = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             Pair<View,String> p1 = Pair.create(postAnimData.getName(), postAnimData.getName().getTransitionName());

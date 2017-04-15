@@ -16,13 +16,13 @@ public class PostAnimData implements Serializable{
     private View propic, name, time, text, post_img, card;
     private Bitmap postImageBitmap;
     private boolean isImage;
-    private String postID;
+    private String postID, postImageLink;
     private Post_Data item;
     private TextView comment_num;
     private int position;
 
     public PostAnimData(View propic, View name, View time, View text, View post_img, View card
-            , TextView comment_num, Bitmap postImageBitmap, boolean isImage, String postID, Post_Data item, int position) {
+            , TextView comment_num, Bitmap postImageBitmap,String postImageLink, boolean isImage, String postID, Post_Data item, int position) {
         this.propic = propic;
         this.name = name;
         this.time = time;
@@ -35,6 +35,11 @@ public class PostAnimData implements Serializable{
         this.comment_num = comment_num;
         this.postImageBitmap = postImageBitmap;
         this.position = position;
+        this.postImageLink = postImageLink;
+    }
+
+    public String getPostImageLink() {
+        return postImageLink;
     }
 
     public int getPosition() {

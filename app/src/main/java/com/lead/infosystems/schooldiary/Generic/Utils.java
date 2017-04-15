@@ -57,6 +57,7 @@ public class Utils {
     public static final String EVENT_FETCH = SERVER_URL+"events_fetch.php";
     public static final String EVENT_INSERT = SERVER_URL+"events_insert.php";
     public static final String PROPIC_UPDATE = SERVER_URL+"propic_change.php";
+    public static final String CHANGE_PASSWORD = SERVER_URL+"change_password.php";
 
     public static final String HOMEWORK_INSERT = SERVER_URL+"homework_insert.php";
 

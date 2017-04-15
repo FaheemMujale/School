@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.lead.infosystems.schooldiary.ApplicationForm.ApplicationForm;
 import com.lead.infosystems.schooldiary.Attendance.Attendance_student;
 import com.lead.infosystems.schooldiary.Attendance.Attendance_teacher;
+import com.lead.infosystems.schooldiary.ChangePassword;
 import com.lead.infosystems.schooldiary.Data.MyDataBase;
 import com.lead.infosystems.schooldiary.Data.UserDataSP;
 import com.lead.infosystems.schooldiary.Events.EventAll;
@@ -310,9 +311,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         }
-//        else if (id == R.id.nav_settings) {
-//
-//        }
+
+        else if(id == R.id.nav_change_password){
+            startActivity(new Intent(getApplicationContext(), ChangePassword.class));
+        }
         else if (id == R.id.nav_log_out) {
             String cloudID = userDataSP.getUserData(UserDataSP.CLOUD_ID);
             userDataSP.clearUserData();

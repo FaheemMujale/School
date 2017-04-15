@@ -18,7 +18,7 @@
     <color name="titleBadgeText">#adafb1</color>
     <color name="mainTextColor">#343d43</color>
     <color name="btnRequest">#ffbf12</color>
-
+    <color name="black">#1d1d1d</color>
     <color name="black_overlay">#66000000</color>
     <color name="backgroundSemiGray">#812e2e2e</color>
 
