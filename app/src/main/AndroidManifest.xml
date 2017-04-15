@@ -122,7 +122,8 @@
             android:name=".Main.PhotoViewActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ChangePassword"
-            android:label="Change Password"></activity>
+            android:label="Change Password"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>
