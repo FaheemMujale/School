@@ -84,9 +84,9 @@ public class UserDataSP {
         editor.commit();
     }
 
-    public boolean isStudent(){
-       return sharedPreferences.getString(IDENTIFICATION,"").contentEquals("student");
-    }
+        public boolean isStudent(){
+           return sharedPreferences.getString(IDENTIFICATION,"").contentEquals("student");
+        }
 
     public void storeStudentData(String json)throws JSONException{
         JSONArray jsonArray = new JSONArray(json);
