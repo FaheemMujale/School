@@ -2,6 +2,7 @@ package com.lead.infosystems.schooldiary;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,8 @@ public class Login extends AppCompatActivity implements IVolleyResponse {
         login = (Button) findViewById(R.id.login);
 
         if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             eUsername.setBackgroundResource(R.drawable.round_corner);
             ePassword.setBackgroundResource(R.drawable.round_corner);
             login.setBackgroundResource(R.drawable.round_corner_btn);

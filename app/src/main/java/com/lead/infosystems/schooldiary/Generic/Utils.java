@@ -27,7 +27,7 @@ public class Utils {
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 
-    public static final String SERVER_URL = "http://leadinfosystems.com/school_diary/SchoolDiary/";
+    public static final String SERVER_URL = "http://imperiumapps.in/school_diary/SchoolDiary/";
     public static final String LOGIN = SERVER_URL+"login.php";
     public static final String POST_FETCH = SERVER_URL+"fetchpost.php";
     public static final String NEW_POST = SERVER_URL + "post.php";

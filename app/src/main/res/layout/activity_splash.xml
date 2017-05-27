@@ -12,20 +12,20 @@
     android:background="@color/colorPrimaryDark">
 
     <TextView
-        android:text="School Diary"
+        android:id="@+id/login_logo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/login_logo_name"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="168dp"
-        android:textStyle="normal|bold"
-        android:textAllCaps="false"
-        android:textAlignment="center"
-        android:transitionName="@string/transition_name_login_logo"
-        android:textSize="36sp"
+        android:layout_marginTop="217dp"
         android:fontFamily="casual"
-        android:textColor="@android:color/background_light" />
+        android:text="Edupline"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:transitionName="@string/transition_name_login_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="Powered By-"
@@ -39,29 +39,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp" />
 
-    <ImageView
-        android:src="@drawable/lis_logo"
-        android:id="@+id/lis_logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:transitionName="@string/transition_lis_logo"
-        android:layout_below="@+id/pwd_by"
-        android:layout_centerHorizontal="true" />
-
     <TextView
-        android:text="Lead Info Systems"
+        android:id="@+id/lis_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lis_name"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="8sp"
+        android:text="Imperium Inc"
+        android:textAllCaps="true"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         android:textStyle="normal|bold|italic"
-        android:textAllCaps="true"
-        android:lineSpacingExtra="8sp"
         android:transitionName="@string/transition_name_login_pow"
-        android:textColor="@color/cardview_light_background"
-        android:fontFamily="sans-serif"
         android:translationZ="1000dp"
-        android:layout_marginBottom="14dp"
-        android:layout_alignBottom="@+id/lis_logo"
+        android:layout_below="@+id/pwd_by"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

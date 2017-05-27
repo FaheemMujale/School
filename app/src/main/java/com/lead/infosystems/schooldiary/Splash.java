@@ -27,7 +27,7 @@ public class Splash extends Activity {
         t1 = (TextView) findViewById(R.id.login_logo_name);
         t2 = (TextView) findViewById(R.id.pwd_by);
         t3 = (TextView) findViewById(R.id.lis_name);
-        lisLogo = (ImageView) findViewById(R.id.lis_logo);
+       // lisLogo = (ImageView) findViewById(R.id.lis_logo);
         if(userDataSP.isUserLoggedIn()){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }else {
@@ -47,9 +47,9 @@ public class Splash extends Activity {
             Pair<View,String> p1 = Pair.create((View)t1, t1.getTransitionName());
             Pair<View,String> p2 = Pair.create((View)t2, t2.getTransitionName());
             Pair<View,String> p3 = Pair.create((View)t3, t3.getTransitionName());
-            Pair<View,String> p4 = Pair.create((View)lisLogo, lisLogo.getTransitionName());
+           // Pair<View,String> p4 = Pair.create((View)lisLogo, lisLogo.getTransitionName());
                 activityOptionsCompat = ActivityOptionsCompat
-                        .makeSceneTransitionAnimation(this,p1,p2,p3,p4);
+                        .makeSceneTransitionAnimation(this,p1,p2,p3);
             startActivity(intent,activityOptionsCompat.toBundle());
         }else{
             startActivity(intent);

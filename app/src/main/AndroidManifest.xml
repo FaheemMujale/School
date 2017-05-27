@@ -123,7 +123,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ChangePassword"
             android:label="Change Password"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
