@@ -18,6 +18,8 @@ import com.lead.infosystems.schooldiary.Main.MainActivity;
 
 import org.json.JSONException;
 
+import java.security.spec.ECField;
+
 public class Login extends AppCompatActivity implements IVolleyResponse {
 
     private EditText eUsername;
@@ -96,7 +98,11 @@ public class Login extends AppCompatActivity implements IVolleyResponse {
                     myVolley.setUrl(Utils.REGESTRATION);
                     myVolley.setParams(UserDataSP.NUMBER_USER,userDataSP.getUserData(UserDataSP.NUMBER_USER));
                     myVolley.setParams(UserDataSP.CLOUD_ID,userDataSP.getUserData(UserDataSP.CLOUD_ID));
-                    myVolley.setParams(DEVICE_NUM,telephonyManager.getDeviceId());
+                    try {
+                        myVolley.setParams(DEVICE_NUM, telephonyManager.getDeviceId());
+                    }catch (Exception e){
+                        myVolley.setParams(DEVICE_NUM, telephonyManager.getSimSerialNumber());
+                    }
                     myVolley.connect();
 
                 } catch (JSONException e) {

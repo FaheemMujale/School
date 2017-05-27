@@ -68,6 +68,7 @@ public class Suggestion_Post extends DialogFragment {
                     JSONArray jsonArray = new JSONArray(result);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String date = jsonObject.getString("date").split(" ")[0];
+                    getDialog().dismiss();
                     if (!result.equals("null")){
                         parseDataSuggestion(jsonObject.getString("sc_id"),
                                 userdatasp.getUserData(UserDataSP.FIRST_NAME),
@@ -92,7 +93,6 @@ public class Suggestion_Post extends DialogFragment {
         myVolley.setParams(UserDataSP.NUMBER_USER,userdatasp.getUserData(UserDataSP.NUMBER_USER));
         myVolley.setParams(UserDataSP.SCHOOL_NUMBER,userdatasp.getUserData(UserDataSP.SCHOOL_NUMBER));
         myVolley.connect();
-        getDialog().dismiss();
     }
 
     public void parseDataSuggestion(String sc_id, String firstName, String lastName, String class_user, String division_user, String user_pic, String s_title, String s_content, String s_date)
@@ -107,7 +107,11 @@ public class Suggestion_Post extends DialogFragment {
         intent.putExtra(SUGGESTION_TITLE, s_title);
         intent.putExtra(SUGGESTION_CONTENT, s_content);
         intent.putExtra(SUGGESTION_DATE, s_date);
-        getActivity().sendBroadcast(intent);
+        try {
+            getActivity().sendBroadcast(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

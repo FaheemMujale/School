@@ -51,22 +51,6 @@ public class FragTabQA extends Fragment implements QaAdaptor.OnLoadMoreListener,
     public FragTabQA() {
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        items.clear();
-        noMoreItems = false;
-        if(ServerConnect.checkInternetConenction(getActivity())&& !backPressed){
-            QA_MIN = "0";
-            progressBar.setVisibility(View.VISIBLE);
-            loadData(QA_MIN,getActivity().getApplicationContext());
-        }else{
-            if(userDataSP.getQaData()!=""){
-                swipeRefreshLayout.setRefreshing(false);
-                qaAdaptor.addAll(parseJson(userDataSP.getQaData()));
-            }
-        }
-    }
 
     @Override
     public void onPause() {
@@ -94,6 +78,19 @@ public class FragTabQA extends Fragment implements QaAdaptor.OnLoadMoreListener,
                 R.color.colorPrimary,
                 R.color.colorPrimaryDark);
         swipeRefreshLayout.setOnRefreshListener(this);
+
+        items.clear();
+        noMoreItems = false;
+        if(ServerConnect.checkInternetConenction(getActivity())&& !backPressed){
+            QA_MIN = "0";
+            progressBar.setVisibility(View.VISIBLE);
+            loadData(QA_MIN,getActivity().getApplicationContext());
+        }else{
+            if(userDataSP.getQaData()!=""){
+                swipeRefreshLayout.setRefreshing(false);
+                qaAdaptor.addAll(parseJson(userDataSP.getQaData()));
+            }
+        }
         return rootview;
     }
 

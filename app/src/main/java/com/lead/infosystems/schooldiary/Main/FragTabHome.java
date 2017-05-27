@@ -218,7 +218,11 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
             }
 
         }else{
-            Toast.makeText(getActivity().getApplicationContext(),"No more posts...",Toast.LENGTH_SHORT).show();
+            try {
+                Toast.makeText(getActivity().getApplicationContext(), "No more posts...", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             noMorePost = true;
             postAdaptor.setProgressMore(false);
             postAdaptor.setMoreLoading(false);

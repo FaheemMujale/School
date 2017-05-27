@@ -91,12 +91,16 @@ public class PostDialog extends DialogFragment implements ICompressedImage{
             public void onClick(View v) {
                 textData = postText.getText().toString().trim();
                 progressDialog.setTitle("Uploading Post..");
-                if(textData.length()>0 && imageFilePath != null){
-                    uploadMultipart(imageFilePath,textData);
-                }else if(textData.length() == 0 && imageFilePath.length()>0){
-                    uploadMultipart(imageFilePath,"  ");
-                }else if(textData.length()>0 && imageFilePath == null){
-                    postWithoutImage(textData);
+                try {
+                    if (textData.length() > 0 && imageFilePath != null) {
+                        uploadMultipart(imageFilePath, textData);
+                    } else if (textData.length() == 0 && imageFilePath.length() > 0) {
+                        uploadMultipart(imageFilePath, "  ");
+                    } else if (textData.length() > 0 && imageFilePath == null) {
+                        postWithoutImage(textData);
+                    }
+                }catch(Exception e){
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry there was some problem",Toast.LENGTH_SHORT).show();
                 }
             }
         });

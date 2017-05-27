@@ -53,12 +53,13 @@ public class StudentDiary_teacher extends Fragment implements IVolleyResponse {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_student_diary_teacher, container, false);
         getActivity().setTitle("HOME WORK");
-        userDataSP=new UserDataSP(getActivity());
-        myVolley = new MyVolley(getActivity().getApplicationContext(), this);
-        list_class=(ListView)rootView.findViewById(R.id.class_list_home);
-        progressBar = (ProgressBar)rootView.findViewById(R.id.homework_progress);
         notAvailable = (TextView)rootView.findViewById(R.id.homeworkNotAvailable);
         noInternet = (TextView)rootView.findViewById(R.id.homenoInternet);
+        list_class=(ListView)rootView.findViewById(R.id.class_list_home);
+        progressBar = (ProgressBar)rootView.findViewById(R.id.homework_progress);
+
+        userDataSP=new UserDataSP(getActivity());
+        myVolley = new MyVolley(getActivity().getApplicationContext(), this);
         adaptor = new MyAdaptor();
         list_class.setAdapter(adaptor);
         checkInternetConnection();
